@@ -1,0 +1,7 @@
+{
+	"Name" : "Naamah Enhanced",
+	"Version" : "1.1.0",
+	"ModAssembly" : "NaamahEnhanced.dll",
+	"AdditionalDependencies" : [],
+	"LoadAfter" : []
+}

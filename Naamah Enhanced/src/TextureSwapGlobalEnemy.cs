@@ -48,7 +48,7 @@ public class TextureSwapGlobalEnemy : GlobalEnemy
 			if (oldTexture != null)
 			{
 				renderer.material.SetTexture("_DiffuseTexture", texture);
-            		}
         	}
+        }
 	}
 }

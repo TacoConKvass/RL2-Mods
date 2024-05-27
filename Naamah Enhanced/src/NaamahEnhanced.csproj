@@ -1,18 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	<TargetFramework>net40</TargetFramework>
-	<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net40</TargetFramework>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	</PropertyGroup>
 	
-  <ItemGroup>
-	<Reference Include="..\..\..\Moje dokumenty\ERYK\Installed\Rogue.Legacy.2.v1.2.2\Rogue Legacy 2_Data\Managed\*.dll">
-		<Private>false</Private>
-	</Reference>
-  </ItemGroup>
-	
-  <ItemGroup>
-    <None Remove="NaamahEnhanced.mod.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="..\..\..\Managed\*.dll">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
 </Project>

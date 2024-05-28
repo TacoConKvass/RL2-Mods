@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<LangVersion>10</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="..\..\Managed\*.dll" Exclude="..\..\Managed\Assembly-CSharp-original.dll">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="lib\*.dll">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+{
+	"Name": "Arsenal",
+	"Version": "1.0.0",
+	"ModAssembly": "bin\\Debug\\net48\\Arsenal.dll",
+	"AdditionalDependencies": [
+		"lib\\Mono.Cecil.dll",
+		"lib\\MonoMod.RuntimeDetour.dll",
+		"lib\\MonoMod.Utils.dll"
+	],
+	"LoadAfter": []
+}

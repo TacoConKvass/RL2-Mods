@@ -1,0 +1,17 @@
+{
+    "WeaponsOnly": {
+        "AppliesToAllClasses": true
+    },
+    "SpellsOnly": {
+        "AppliesToAllClasses": false,
+        "AppliesToClasses": [
+            30
+        ]
+    },
+    "TalentsOnly": {
+        "AppliesToAllClasses": false,
+        "AppliesToClasses": [
+            130
+        ]
+    }
+}

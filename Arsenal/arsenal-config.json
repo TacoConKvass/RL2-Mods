@@ -1,6 +1,7 @@
 {
     "WeaponsOnly": {
-        "AppliesToAllClasses": true
+        "AppliesToAllClasses": true,
+        "AppliesToClasses": []
     },
     "SpellsOnly": {
         "AppliesToAllClasses": false,

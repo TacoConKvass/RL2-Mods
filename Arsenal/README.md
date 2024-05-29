@@ -17,4 +17,5 @@ Ronin = 180,
 Pirate = 190,
 Bard = 200,
 Astromancer = 210,
-``` 
+```
+If the same class is mentioned in different configs (for example it's in both WeaponsOnly and TalentsOnly) the most bottom one will be applied.

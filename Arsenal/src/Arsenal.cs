@@ -18,7 +18,8 @@ public class Arsenal : Mod
 		{
 			Config = new ArsenalConfig() {
 				WeaponsOnly = new ModeConfig() {
-					AppliesToAllClasses = true
+					AppliesToAllClasses = true,
+					AppliesToClasses = new ClassType[] { }
 				},
 				SpellsOnly = new ModeConfig() {
 					AppliesToClasses = new ClassType[] { ClassType.MagicWandClass }

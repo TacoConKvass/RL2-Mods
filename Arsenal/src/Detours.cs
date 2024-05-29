@@ -1,14 +1,16 @@
 ﻿using MonoMod.RuntimeDetour;
 using RL2.ModLoader;
+using Steamworks;
 using System;
 using System.Reflection;
 
 namespace Arsenal.Detours;
 
-public class WeaponDetours : ModSystem 
+public class Detours : ModSystem 
 {
 	public Hook ShotgunDetour;
 	public Hook PistolDetour;
+	public Hook InitialCharacterCreation;
 
 	public int TalentTimer = 0;
 	public int SpellTimer = 0;
@@ -65,6 +67,22 @@ public class WeaponDetours : ModSystem
 					}
 				}
 			})
+		);
+
+        InitialCharacterCreation = new Hook(
+			typeof(TutorialRoomController).GetMethod("CreateStartingCharacter", BindingFlags.NonPublic | BindingFlags.Instance),
+			new Action<Action<TutorialRoomController>, TutorialRoomController>((Action<TutorialRoomController> orig, TutorialRoomController self) => {
+				// Run vanilla logic
+				orig(self);
+                PlayerController playerController = PlayerManager.GetPlayerController();
+                CharacterData characterData = SaveManager.PlayerSaveData.CurrentCharacter;
+				GameManager.Instance.GetComponent<SetAbilitiesSystem>().ModifyGeneratedCharacter(characterData);
+                playerController.CharacterClass.SetAbility(CastAbilityType.Weapon, SaveManager.PlayerSaveData.CurrentCharacter.Weapon);
+                playerController.CharacterClass.SetAbility(CastAbilityType.Spell, SaveManager.PlayerSaveData.CurrentCharacter.Spell);
+                playerController.CharacterClass.SetAbility(CastAbilityType.Talent, SaveManager.PlayerSaveData.CurrentCharacter.Talent);
+                playerController.ResetCharacter();
+                playerController.SetMana(0f, additive: false, runEvents: true);
+            })
 		);
 	}
 }

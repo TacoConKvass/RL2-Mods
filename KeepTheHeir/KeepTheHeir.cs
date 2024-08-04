@@ -1,49 +1,42 @@
-﻿using Mono.Cecil.Cil;
+﻿using KeepTheHeir.Config;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
+using Rewired.Utils.Libraries.TinyJson;
 using RL2.ModLoader;
 using System;
 using System.Collections;
+using System.IO;
 using System.Reflection;
 
 namespace KeepTheHeir;
 
 [ModEntrypoint]
-public class KeepTheHeir
+public partial class KeepTheHeir
 {
-	public ILHook RedHoodNPCDialogueEdit = new ILHook(
-		typeof(NewGamePlusShop).GetNestedType("<OpenNGPlusShopCoroutine>d__27", BindingFlags.NonPublic).GetMethod("MoveNext", BindingFlags.NonPublic | BindingFlags.Instance),
-		(ILContext il) => { 
-			ILCursor cursor = new ILCursor(il);
+	public static KeepTheHeir Instance { get; private set; }
 
-			cursor.GotoNext(
-				i => i.MatchLdloc(1), i => i.MatchCall<NewGamePlusShop>("RunEndingDialogue")
-			);
+	public static string ConfigPath => ModLoader.ModPath + "\\KeepTheHeir.config.json";
 
-			cursor.RemoveRange(3);
-		}
-	);
-
-	public ILHook DontResetSaveData = new ILHook(
-		typeof(NewGamePlusShop).GetNestedType("<StartNewGamePlusCoroutine>d__34", BindingFlags.NonPublic).GetMethod("MoveNext", BindingFlags.NonPublic | BindingFlags.Instance),
-		(ILContext il) => { 
-			ILCursor cursor = new ILCursor(il);
-
-			cursor.GotoNext(
-				MoveType.After,
-				i => i.MatchLdsfld(typeof(SaveManager).GetField("PlayerSaveData", BindingFlags.Public | BindingFlags.Static))
-			);
-
-			cursor.RemoveRange(4);
-
-			cursor.Emit(OpCodes.Ldc_I4_0);
-		}
-	);
+	public KeepTheHeirConfig Config { get; private set; }
 
 	public KeepTheHeir() {
+		if (Instance == null) {
+			Instance = this;
+		}
+
 		ModLoader.OnLoad += (() => {
 			DontResetSaveData.Apply();
 			RedHoodNPCDialogueEdit.Apply();
+
+			if (!File.Exists(ConfigPath)) {
+				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
+			}
+			if (JsonParser.FromJson<KeepTheHeirConfig>(File.ReadAllText(ConfigPath)) == null) {
+				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
+			}
+
+			Config = JsonParser.FromJson<KeepTheHeirConfig>(File.ReadAllText(ConfigPath));
 		});
 
 		ModLoader.OnUnload += (() => {

@@ -32,9 +32,6 @@ public partial class KeepTheHeir
 			if (!File.Exists(ConfigPath)) {
 				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
 			}
-			if (JsonParser.FromJson<KeepTheHeirConfig>(File.ReadAllText(ConfigPath)) == null) {
-				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
-			}
 
 			Config = JsonParser.FromJson<KeepTheHeirConfig>(File.ReadAllText(ConfigPath));
 		});

@@ -10,10 +10,6 @@
 		<Reference Include="..\..\Managed\*.dll">
 			<Private>false</Private>
 		</Reference>
-		
-		<Reference Include="..\RL2.API\RL2.API.dll">
-			<Private>false</Private>
-		</Reference>
 	</ItemGroup>
 
 </Project>

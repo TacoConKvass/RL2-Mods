@@ -1,0 +1,7 @@
+{
+	"Name": "Tutorial Skip",
+	"Author": "TacoConKvass",
+	"Version": "1.0.0",
+	"ModAssembly": "bin/Release/net48/TutorialSkip.dll",
+	"LoadAfter": []
+}

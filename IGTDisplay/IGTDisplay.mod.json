@@ -1,0 +1,9 @@
+{
+	"Name": "In Game Time Display",
+	"Author": "TacoConKvass",
+	"Version": "1.2.0",
+	"ModAssembly": "bin/Release/net48/IGTDisplay.dll",
+	"LoadAfter": [
+		
+	]
+}

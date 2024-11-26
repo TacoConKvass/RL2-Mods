@@ -1,12 +1,11 @@
 ﻿using MonoMod.RuntimeDetour;
-using RL2.ModLoader;
-using Steamworks;
+using RL2.API;
 using System;
 using System.Reflection;
 
 namespace Arsenal.Detours;
 
-public class Detours : ModSystem 
+public class Detours : IRegistrable 
 {
 	public Hook ShotgunDetour;
 	public Hook PistolDetour;
@@ -15,7 +14,7 @@ public class Detours : ModSystem
 	public int TalentTimer = 0;
 	public int SpellTimer = 0;
 
-	public override void OnLoad() {
+	public void Register() {
 		ShotgunDetour = new Hook(
 			typeof(Shotgun_Ability).GetMethod("Update", BindingFlags.NonPublic | BindingFlags.Instance),
 			new Action<Action<Shotgun_Ability>, Shotgun_Ability>((Action<Shotgun_Ability> orig, Shotgun_Ability self) => {

@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Reference Include="..\..\Managed\*.dll" Exclude="..\..\Managed\Assembly-CSharp-original.dll">
+		<Reference Include="..\..\Managed\*.dll">
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="lib\*.dll">
+		<Reference Include="..\RL2.API\*.dll">
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>

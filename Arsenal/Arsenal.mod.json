@@ -1,11 +1,7 @@
 {
 	"Name": "Arsenal",
+	"Author": "TacoConKvass",
 	"Version": "2.0.0",
-	"ModAssembly": "bin\\Release\\net48\\Arsenal.dll",
-	"AdditionalDependencies": [
-		"lib\\Mono.Cecil.dll",
-		"lib\\MonoMod.RuntimeDetour.dll",
-		"lib\\MonoMod.Utils.dll"
-	],
-	"LoadAfter": []
+	"ModAssembly": "bin/Release/net48/Arsenal.dll",
+	"LoadAfter": ["RL2.API"]
 }

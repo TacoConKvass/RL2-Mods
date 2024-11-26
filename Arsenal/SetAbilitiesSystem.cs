@@ -1,16 +1,22 @@
 ﻿using Arsenal.Config;
 using RL2.ModLoader;
+using RL2.API;
 
 namespace Arsenal;
 
-public class SetAbilitiesSystem : ModSystem
+public class SetAbilitiesSystem : IRegistrable
 {
 	AbilityType[] AllWeapons() => CharacterCreator.GetAvailableWeapons(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KunaiWeapon);
 	AbilityType[] AllSpells() => CharacterCreator.GetAvailableSpells(ClassType.CURIO_SHOPPE_CLASS);
 	AbilityType[] AllTalents() => CharacterCreator.GetAvailableTalents(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KiStrikeTalent);
 	ArsenalConfig Config => Arsenal.Instance.Config;
 
-	public override void ModifyCharacterRandomization(CharacterData characterData) {
+	public void Register() {
+		Player.HeirGeneration.ModifyCharacterRandomization += ModifyCharacterRandomization;
+		Player.HeirGeneration.ModifyCharacterData +=  ModifyGeneratedCharacter;
+	}
+
+	public void ModifyCharacterRandomization(CharacterData characterData) {
 		if (Config.WeaponsOnly.AppliesToAllClasses || Config.WeaponsOnly.AppliesToClasses.IndexOf(characterData.ClassType) != -1) {
 			AbilityType[] Weapons = AllWeapons();
 			characterData.Weapon = Weapons[RNGManager.GetRandomNumber(RngID.Lineage, "Arsenal: GetRandomWeaponSlot", 0, Weapons.Length)];
@@ -33,7 +39,7 @@ public class SetAbilitiesSystem : ModSystem
 		}
 	}
 
-	public override void ModifyGeneratedCharacter(CharacterData characterData)
+	public void ModifyGeneratedCharacter(CharacterData characterData, bool classLocked, bool spellLocked)
 	{
 		ModifyCharacterRandomization(characterData);
 		if (Config.SpellsOnly.AppliesToAllClasses || Config.SpellsOnly.AppliesToClasses.IndexOf(characterData.ClassType) != -1) {

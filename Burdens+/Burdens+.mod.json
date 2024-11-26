@@ -2,6 +2,6 @@
     "Name": "Burdens+",
     "Author": "TacoConKvass",
     "Version": "1.0.0",
-    "ModAssembly": "bin/Debug/net48/Burdens+.dll",
+    "ModAssembly": "bin/Release/net48/Burdens+.dll",
     "LoadAfter": []
 }

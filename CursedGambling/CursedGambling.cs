@@ -1,7 +1,7 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
-using RL2.ModLoader;
+using RL2.API;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

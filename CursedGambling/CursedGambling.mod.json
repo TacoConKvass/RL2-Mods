@@ -2,6 +2,6 @@
     "Name": "Cursed Gambling",
     "Author": "TacoConKvass",
     "Version": "1.0.0",
-    "ModAssembly": "bin/Debug/net48/CursedGambling.dll",
+    "ModAssembly": "bin/Release/net48/CursedGambling.dll",
     "LoadAfter": ["RL2.API"]
 }

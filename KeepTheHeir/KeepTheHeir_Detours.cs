@@ -57,18 +57,4 @@ public partial class KeepTheHeir {
 		}
 	);
 
-	public ILHook RedHoodCantRunAwayAnymore = new ILHook(
-		typeof(NewGamePlusShop).GetMethod("OnPlayerEnter", BindingFlags.NonPublic | BindingFlags.Instance),
-		(ILContext il) => {
-			ILCursor cursor = new ILCursor(il);
-
-			cursor.GotoNext(
-				MoveType.After,
-				i => i.MatchLdarg(0), i => i.MatchCall<UnityEngine.Component>("get_gameObject")
-			);
-
-			cursor.Remove();
-			cursor.Emit(OpCodes.Ldc_I4_1);
-		}
-	); 
 }

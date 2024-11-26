@@ -1,7 +1,7 @@
 ﻿using Arsenal.Config;
 using Arsenal.Utils;
 using Rewired.Utils.Libraries.TinyJson;
-using RL2.ModLoader;
+using RL2.API;
 using System.IO;
 
 namespace Arsenal;

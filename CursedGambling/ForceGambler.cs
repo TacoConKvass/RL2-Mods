@@ -1,9 +1,11 @@
-using RL2.ModLoader;
+using RL2.API;
 
 namespace CursedGambling;
 
-public class ForceGambler : ModSystem {
-	public override void ModifyGeneratedCharacterData(CharacterData characterData, bool classLocked, bool spellLocked) {
-		characterData.TraitOne = TraitType.BonusChestGold;
-	}
+public class ForceGambler : IRegistrable {
+	public void Register() {
+		Player.HeirGeneration.ModifyCharacterData += (CharacterData characterData, bool classLocked, bool spellLocked) => {
+			characterData.TraitOne = TraitType.BonusChestGold;
+		};
+	}	
 }

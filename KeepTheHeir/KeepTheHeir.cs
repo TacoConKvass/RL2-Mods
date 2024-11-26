@@ -28,11 +28,9 @@ public partial class KeepTheHeir
 		ModLoader.OnLoad += (() => {
 			DontResetSaveData.Apply();
 			RedHoodNPCDialogueEdit.Apply();
+			RedHoodCantRunAwayAnymore.Apply();
 
 			if (!File.Exists(ConfigPath)) {
-				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
-			}
-			if (JsonParser.FromJson<KeepTheHeirConfig>(File.ReadAllText(ConfigPath)) == null) {
 				File.WriteAllText(ConfigPath, JsonWriter.ToJson(new KeepTheHeirConfig() { GiveMoneyToCharonWhenLooping = false }).Prettify());
 			}
 
@@ -42,6 +40,7 @@ public partial class KeepTheHeir
 		ModLoader.OnUnload += (() => {
 			DontResetSaveData.Undo();
 			RedHoodNPCDialogueEdit.Undo();
+			RedHoodCantRunAwayAnymore.Undo();
 		});
 	}
 }

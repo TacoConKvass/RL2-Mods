@@ -1,5 +1,5 @@
-﻿using System.IO;
-using RL2.ModLoader;
+﻿using RL2.API;
+using System.IO;
 using UnityEngine;
 
 public class NaamahEnhanced : Mod
@@ -8,16 +8,10 @@ public class NaamahEnhanced : Mod
 
 	public static string Config => Instance.Path + "\\naamah-texture-config.json";
 	
-	public NaamahEnhanced()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-	}
-
 	public override void OnLoad()
 	{
+		Instance = this;
+		
 		if (!File.Exists(Config))
 		{
 			File.WriteAllText(Config, JsonUtility.ToJson(new ConfigFile(), true));

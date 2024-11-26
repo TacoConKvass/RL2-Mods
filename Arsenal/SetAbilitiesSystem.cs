@@ -1,22 +1,21 @@
 ﻿using Arsenal.Config;
-using RL2.ModLoader;
 using RL2.API;
 
 namespace Arsenal;
 
 public class SetAbilitiesSystem : IRegistrable
 {
-	AbilityType[] AllWeapons() => CharacterCreator.GetAvailableWeapons(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KunaiWeapon);
-	AbilityType[] AllSpells() => CharacterCreator.GetAvailableSpells(ClassType.CURIO_SHOPPE_CLASS);
-	AbilityType[] AllTalents() => CharacterCreator.GetAvailableTalents(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KiStrikeTalent);
-	ArsenalConfig Config => Arsenal.Instance.Config;
+	static AbilityType[] AllWeapons() => CharacterCreator.GetAvailableWeapons(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KunaiWeapon);
+	static AbilityType[] AllSpells() => CharacterCreator.GetAvailableSpells(ClassType.CURIO_SHOPPE_CLASS);
+	static AbilityType[] AllTalents() => CharacterCreator.GetAvailableTalents(ClassType.CURIO_SHOPPE_CLASS).Add(AbilityType.KiStrikeTalent);
+	static ArsenalConfig Config => Arsenal.Instance.Config;
 
 	public void Register() {
 		Player.HeirGeneration.ModifyCharacterRandomization += ModifyCharacterRandomization;
 		Player.HeirGeneration.ModifyCharacterData +=  ModifyGeneratedCharacter;
 	}
 
-	public void ModifyCharacterRandomization(CharacterData characterData) {
+	public static void ModifyCharacterRandomization(CharacterData characterData) {
 		if (Config.WeaponsOnly.AppliesToAllClasses || Config.WeaponsOnly.AppliesToClasses.IndexOf(characterData.ClassType) != -1) {
 			AbilityType[] Weapons = AllWeapons();
 			characterData.Weapon = Weapons[RNGManager.GetRandomNumber(RngID.Lineage, "Arsenal: GetRandomWeaponSlot", 0, Weapons.Length)];
@@ -39,7 +38,7 @@ public class SetAbilitiesSystem : IRegistrable
 		}
 	}
 
-	public void ModifyGeneratedCharacter(CharacterData characterData, bool classLocked, bool spellLocked)
+	public static  void ModifyGeneratedCharacter(CharacterData characterData, bool classLocked, bool spellLocked)
 	{
 		ModifyCharacterRandomization(characterData);
 		if (Config.SpellsOnly.AppliesToAllClasses || Config.SpellsOnly.AppliesToClasses.IndexOf(characterData.ClassType) != -1) {

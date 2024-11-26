@@ -14,6 +14,7 @@ public class Arsenal : Mod
 
 	public override void OnLoad() {
 		Instance = this;
+		
 		if (!File.Exists(ConfigPath))
 		{
 			Config = new ArsenalConfig() {
@@ -32,6 +33,7 @@ public class Arsenal : Mod
 			Log("Created Arsenal config");
 			return;
 		}
+		
 		Config = JsonParser.FromJson<ArsenalConfig>(File.ReadAllText(ConfigPath));
 		Log("Loaded Arsenal config");
 	}

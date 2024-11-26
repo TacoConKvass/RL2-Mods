@@ -1,20 +1,21 @@
-﻿using RL2.ID;
-using RL2.ModLoader;
-using System.Collections.Generic;
+﻿using RL2.API;
 using System.IO;
 using UnityEngine;
 
-public class TextureSwapGlobalEnemy : GlobalEnemy
+public class TextureSwapGlobalEnemy : IRegistrable
 {
-	public override Dictionary<int, EnemyRank[]> AppliesToEnemy => new Dictionary<int, EnemyRank[]>() 
-	{
-		{ EnemyID.DancingBoss, new EnemyRank[] { EnemyRank.Basic, EnemyRank.Advanced, EnemyRank.Expert } }
-	};
+	static Texture2D texture = new Texture2D(1, 1);
 
-	Texture2D texture = new Texture2D(1, 1);
+	public void Register() {
+		Enemy.OnSpawn += OnSpawn;
+	}
 
-	public override void OnSpawn()
+	public static void OnSpawn(EnemyController enemy)
 	{
+		if (enemy.EnemyType != EnemyType.DancingBoss) {
+			return;
+		}
+
 		ConfigFile config = JsonUtility.FromJson<ConfigFile>(File.ReadAllText(NaamahEnhanced.Config));
 
 		if (config.Forced != "")
@@ -30,7 +31,7 @@ public class TextureSwapGlobalEnemy : GlobalEnemy
 		}
 		else
 		{
-			string[] options = Rank == EnemyRank.Advanced ? config.PrimeTextures : config.RegularTextures;
+			string[] options = enemy.EnemyRank == EnemyRank.Advanced ? config.PrimeTextures : config.RegularTextures;
 			int index = Random.Range(0, options.Length);
 			if (File.Exists(NaamahEnhanced.Instance.Path + $"\\Assets\\{options[index]}"))
 			{
@@ -42,13 +43,13 @@ public class TextureSwapGlobalEnemy : GlobalEnemy
 			}
 		}
 
-		foreach (Renderer renderer in Enemy.RendererArray)
+		foreach (Renderer renderer in enemy.RendererArray)
 		{
 			Texture oldTexture = renderer.material.GetTexture("_DiffuseTexture");
 			if (oldTexture != null)
 			{
 				renderer.material.SetTexture("_DiffuseTexture", texture);
-        	}
-        }
+			}
+		}
 	}
 }

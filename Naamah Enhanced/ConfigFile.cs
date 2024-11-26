@@ -1,6 +1,6 @@
 ﻿public struct ConfigFile
 {
-    public string Forced;
-    public string[] RegularTextures;
-    public string[] PrimeTextures;
+	public string Forced;
+	public string[] RegularTextures;
+	public string[] PrimeTextures;
 }

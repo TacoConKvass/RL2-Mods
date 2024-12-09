@@ -1,0 +1,7 @@
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\obj\Release\net48\FastStart.csproj.AssemblyReference.cache
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\obj\Release\net48\FastStart.GeneratedMSBuildEditorConfig.editorconfig
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\obj\Release\net48\FastStart.csproj.CoreCompileInputs.cache
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\bin\Release\net48\FastStart.dll
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\bin\Release\net48\FastStart.pdb
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\obj\Release\net48\FastStart.dll
+D:\Gry\Epic Games Store\RogueLegacy2\Rogue Legacy 2_Data\Mods\FastStart\obj\Release\net48\FastStart.pdb

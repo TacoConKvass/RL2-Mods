@@ -1,0 +1,9 @@
+{
+	"Name": "Fast Start",
+	"Author": "TacoConKvass",
+	"Version": "1.0.0",
+	"ModAssembly": "bin/Release/net48/FastStart.dll",
+	"LoadAfter": [
+		"RL2.API"
+	]
+}

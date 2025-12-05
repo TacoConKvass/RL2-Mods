@@ -1,0 +1,9 @@
+{
+	"Name": "WandReticleReturn",
+	"Author": "TacoConKvass",
+	"Version": "1.0.0",
+	"ModAssembly": "WandReticleReturn.dll",
+	"LoadAfter": [
+		
+	]
+}

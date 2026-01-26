@@ -1,0 +1,9 @@
+{
+    "Name": "ScarsPrime",
+    "Author": "TacoConKvass",
+    "Version": "2.0.0",
+    "ModAssembly": "ScarsPrime.dll",
+    "LoadAfter": [
+        "RL2.API"
+    ]
+}

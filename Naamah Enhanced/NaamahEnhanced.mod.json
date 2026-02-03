@@ -1,7 +1,7 @@
 {
 	"Name" : "Naamah Enhanced",
 	"Author": "TacoConKvass",
-	"Version" : "2.0.0",
+	"Version" : "2.1.0",
 	"ModAssembly" : "NaamahEnhanced.dll",
 	"LoadAfter" : [
 		"RL2.API"

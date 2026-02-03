@@ -7,7 +7,7 @@ public class TextureSwapGlobalEnemy : IRegistrable
 	static Texture2D texture = new Texture2D(1, 1);
 
 	public void Register() {
-		Enemy.OnSpawn += OnSpawn;
+		Enemy.OnSpawn.Event += OnSpawn;
 	}
 
 	public static void OnSpawn(EnemyController enemy)

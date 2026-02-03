@@ -1,17 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<Import Project="../RL2.API.targets" />
+	
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
 		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 	</PropertyGroup>
-	
-	<ItemGroup>
-		<Reference Include="..\..\Managed\*.dll">
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="..\RL2.API\*.dll">
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
 
 </Project>

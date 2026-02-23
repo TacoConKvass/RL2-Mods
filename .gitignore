@@ -4,3 +4,5 @@
 RL2.ModLoader.targets
 /RL2.API.targets
 /API
+*/.vscode
+*/*.sln

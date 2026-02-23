@@ -1,0 +1,9 @@
+{
+    "Name": "Perma1HP",
+    "Author": "",
+    "Version": "1.0.0",
+    "ModAssembly": "Perma1HP.dll",
+    "LoadAfter": [
+        "RL2.API"
+    ]
+}

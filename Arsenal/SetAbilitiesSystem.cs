@@ -11,8 +11,8 @@ public class SetAbilitiesSystem : IRegistrable
 	static ArsenalConfig Config => Arsenal.Instance.Config;
 
 	public void Register() {
-		Player.HeirGeneration.ModifyCharacterRandomization += ModifyCharacterRandomization;
-		Player.HeirGeneration.ModifyCharacterData +=  ModifyGeneratedCharacter;
+		Player.HeirGeneration.ModifyCharacterRandomization.Event += ModifyCharacterRandomization;
+		Player.HeirGeneration.ModifyCharacterData.Event +=  ModifyGeneratedCharacter;
 	}
 
 	public static void ModifyCharacterRandomization(CharacterData characterData) {

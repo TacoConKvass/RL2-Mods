@@ -5,10 +5,10 @@ namespace FastStart;
 
 public class FastStart : Mod {
 	public override void OnLoad() {
-		Player.OnSpawn += GrantBonuses;
+		Player.OnSpawn.Event += GrantBonuses;
 	}
 	public override void OnUnload() {
-		Player.OnSpawn -= GrantBonuses;
+		Player.OnSpawn.Event -= GrantBonuses;
 	}
 
 	public static void GrantBonuses(PlayerController player) {

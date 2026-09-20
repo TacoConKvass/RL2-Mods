@@ -1,0 +1,9 @@
+{
+	"Name": "UnlockAllNG",
+	"Author": "TacoConKvass",
+	"Version": "1.0.0",
+	"ModAssembly": "UnlockAllNG.dll",
+	"LoadAfter": [
+		
+	]
+}
